@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "../../utility";
+import { API_BASE_URL } from "../../util/utility";
 
 
 
@@ -17,7 +17,6 @@ const LoginForm = () => {
                     const token = response.data['token']
                     localStorage.setItem("user-token",token);
                     navigate("/")
-
                   })
   }
 

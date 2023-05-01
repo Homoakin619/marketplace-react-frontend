@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
-import { API_BASE_URL } from "../utility"
+import { API_BASE_URL } from "./utility"
 
 type ProtectedRouteProps = {
     children?: React.ReactNode
@@ -45,8 +45,8 @@ const ProtectedRoute:React.FC<ProtectedRouteProps> = ({children}) => {
         () => {validateToken();
             console.log("running route");
             
-            axios.defaults.headers.common.Authorization = userToken;
-            console.log("header is set");
+            // axios.defaults.headers.common.Authorization = userToken;
+            // console.log("header is set");
             
         },[userToken]
     )

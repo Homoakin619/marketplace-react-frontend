@@ -1,31 +1,29 @@
 import { useForm } from "react-hook-form";
-import axios from "../../node_modules/axios/index";
-import { API_BASE_URL } from "../utility";
+import { API_BASE_URL, req } from "../util/utility";
 
 const StoreForm = () => {
   const storeCreationForm = useForm();
   const { handleSubmit, register } = storeCreationForm;
-  const userToken = localStorage.getItem("user-token");
-  axios.defaults.headers.common.Authorization = `Bearer ${userToken}`
-  const createStore = async (data: any) => {
-    console.log(data);
-    const formData = new FormData()
-    formData.append("title",data.title)
-    formData.append("address",data.address)
-    formData.append("image",data.image[0])
-    
-    await axios
-      .post(API_BASE_URL + "/store/create", formData)
+
+  const createStore = (data: any) => {
+    const endpoint = API_BASE_URL + "/store/create";
+
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("address", data.address);
+    formData.append("image", data.image[0]);
+
+    req(endpoint, "post", formData, null)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };
   return (
-    <div className="row justify-content-center mt-3 ">
-      <div className="col-8 shadow p-3 mb-5 rounded">
-        <div>
-          <h4>Store Form</h4>
-        </div>
-        <form action="" method="post" onSubmit={handleSubmit(createStore)}>
+    <div className="row justify-content-center mt-3 " id="centered">
+      <div className="form-title-container">
+        <h4 className="form-title">Store Form</h4>
+      </div>
+      <div className="shadow p-3 mb-5 rounded" id="form-card">
+        <form method="post" onSubmit={handleSubmit(createStore)}>
           <div className="mb-3">
             <label htmlFor="titleField" className="form-label">
               Store Name
@@ -76,7 +74,12 @@ const StoreForm = () => {
           </div> */}
 
           <div className="input-group mb-3">
-            <input type="file" className="form-control" id="inputGroupFile02" {...register("image")} />
+            <input
+              type="file"
+              className="form-control"
+              id="inputGroupFile02"
+              {...register("image")}
+            />
             <label className="input-group-text" htmlFor="inputGroupFile02">
               Upload
             </label>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import "./assets/css/main.css"
 import { Outlet, useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "./utility";
+import { API_BASE_URL } from "./util/utility";
 import axios from "axios";
 import Nav from "./components/app/Nav";
 import ProtectedRoute from "./util/ProtectedRoute";

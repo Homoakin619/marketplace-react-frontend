@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "../../utility";
+import { API_BASE_URL } from "../../util/utility";
+import profile_image from "../../assets/profile_image.svg"
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -13,10 +14,10 @@ const Nav = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <nav className="navbar shadow navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+      <div className="container justify-content-center" id="nav-style">
         <a className="navbar-brand" href="#">
-          HomePage Logged In
+          HomePage 
         </a>
         <button
           className="navbar-toggler"
@@ -29,8 +30,8 @@ const Nav = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="collapse navbar-collapse j" id="navbarSupportedContent">
+          <ul className="navbar-nav  me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
                 Home
@@ -82,14 +83,12 @@ const Nav = () => {
                 </li>
               </ul>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/user/create">
-                User
-              </Link>
-            </li>
           </ul>
-          <div className="d-flex">
-            <button className="btn btn-outline-danger m-1" onClick={logoutUser}>
+          <div className="d-flex align-items-center jutify-content-between">
+            <a href="/account">
+              <img src={profile_image} alt="" />
+            </a>
+            <button className="btn btn-danger m-1" onClick={logoutUser}>
               Logout
             </button>
           </div>

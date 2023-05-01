@@ -1,9 +1,11 @@
 
-
 const Base = () => {
+
   return (
-    <div className="container m-3">
-        <h5>Welcome Home</h5>
+    <div className="container">
+      <div className="main-content">
+        <h1>Welcome Home</h1>
+      </div>
     </div>
   )
 }

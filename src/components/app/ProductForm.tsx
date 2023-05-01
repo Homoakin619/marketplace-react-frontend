@@ -1,31 +1,31 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { API_BASE_URL } from "../../utility";
+import { API_BASE_URL, req } from "../../util/utility";
 
 const ProductForm = () => {
   const productForm = useForm();
   const { handleSubmit, register } = productForm;
 
   const processProductCreation = async (data: any) => {
-        console.log(data);
-        const formData = new FormData();
-        formData.append("title",data.title)
-        formData.append("description",data.description)
-        formData.append("price",data.price)
-        formData.append("image",data.image[0])
-        
-        await axios.post(API_BASE_URL+"/product/create",formData)
-        .then(response => console.log(response)
-        ).catch(error => console.log(error)
-        )
-  }
+    const endpoint = API_BASE_URL + "/product/create";
+
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("price", data.price);
+    formData.append("image", data.image[0]);
+
+    req(endpoint, "post", formData, null)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
 
   return (
-    <div className="row justify-content-center mt-3 ">
-      <div className="col-8 shadow p-3 mb-5 rounded">
-        <div>
-          <h4>Product Form</h4>
-        </div>
+    <div className="row justify-content-center mt-3" id="centered">
+      <div className="form-title-container">
+        <h4 className="form-title">Product Form</h4>
+      </div>
+      <div className="shadow p-3 mb-5 rounded" id="form-card">
         <form method="post" onSubmit={handleSubmit(processProductCreation)}>
           <div className="mb-3">
             <label htmlFor="titleField" className="form-label">

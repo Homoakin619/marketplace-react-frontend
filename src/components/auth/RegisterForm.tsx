@@ -5,7 +5,7 @@ import PhoneInput from "react-phone-number-input";
 import E164Number from "react-phone-number-input"
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { API_BASE_URL } from "../../utility";
+import { API_BASE_URL } from "../../util/utility";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {

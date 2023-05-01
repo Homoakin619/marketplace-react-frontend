@@ -1,21 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_BASE_URL } from "../../utility";
+import { API_BASE_URL, req } from "../../util/utility";
 
 const AllStores = () => {
   const [stores, setStores] = useState([]);
   console.log(stores);
   
-  const token = localStorage.getItem("user-token");
+  const endpoint = API_BASE_URL + "/store";
 
   useEffect(() => {
-    (async () => {
-      await axios
-        .get(API_BASE_URL + "/store",{withCredentials: true})
-        .then((response) => {setStores(response.data);console.log(response.data);
-        })
-        .catch((error) => console.log(error));
-    })();
+    console.log("fetching stores");
+    
+    req(endpoint,"get",null,{withCredentials: true})
+      .then((response) => {setStores(response.data);console.log(response.data);
+      })
+      .catch((error) => console.log(error));
   }, []);
   return (
     <div className="container mt-3">

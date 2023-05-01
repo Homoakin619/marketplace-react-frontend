@@ -14,6 +14,8 @@ import Auth from "./components/auth/Auth";
 import ProtectedRoute from "./util/ProtectedRoute";
 import Base from "./components/app/Base";
 import AllProducts from "./components/app/AllProducts";
+import ProfilePage from "./components/user/ProfilePage";
+import UpdatePassword from "./components/user/UpdatePassword";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
           {
             path: "product/create",
             element: <ProductForm />,
+          },
+          {
+            path: "account",
+            element: <ProfilePage />,
+          },
+          {
+            path: "account/update/password",
+            element: <UpdatePassword />,
           },
         ],
       },
