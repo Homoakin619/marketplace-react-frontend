@@ -16,6 +16,7 @@ import Base from "./components/app/Base";
 import AllProducts from "./components/app/AllProducts";
 import ProfilePage from "./components/user/ProfilePage";
 import UpdatePassword from "./components/user/UpdatePassword";
+import LandingPage from "./components/landingpage/LandingPage";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,8 @@ const router = createBrowserRouter([
           },
           {
             path: "store",
-            element: <AllStores />,
+            // element: <AllStores />,
+            element:<LandingPage />
           },
           {
             path: "product",
